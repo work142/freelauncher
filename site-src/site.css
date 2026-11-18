@@ -1,0 +1,186 @@
+/* Love Panel 3.0 - Site stili
+ * Renkler iki ana değişkenden (--p ana, --s ikincil) türetilir; değerleri site.js yazar.
+ * Bölümler: 1 Temel · 2 Açılış · 3 Hero · 4 Albüm ortak · 5-9 Anı tasarımları · 10 Oynatıcı · 11 Mobil
+ */
+
+/* ===== 1. Temel ===== */
+:root{
+  --p:#a77af2;--s:#ff9fcf;--bg:#0f0b1f;--bg2:#1d1238;--tx:#f6f1ff;--mu:#cbbfe6;--ac:#e6d4ff;
+  --card:rgba(255,255,255,.07);--line:rgba(255,255,255,.22);
+  --btn:linear-gradient(135deg,#a77af2,#d58ccf);--on-btn:#fff;--glow:rgba(167,122,242,.45);
+  --s-soft:rgba(255,159,207,.28);--p-soft:rgba(167,122,242,.25);
+  --paper:#f7f0e4;--ink:#2a2033;--sky1:#070516;--sky2:#1a1245;--sky-star:#f1e6ff;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --script:"Segoe Script","Snell Roundhand","Apple Chancery","Brush Script MT","Lucida Handwriting",cursive;
+  --hand:"Segoe Print","Bradley Hand","Chalkboard SE","Marker Felt","Comic Sans MS",cursive;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 var(--sans);overflow-x:hidden}
+#app{min-height:100vh;background:linear-gradient(170deg,var(--bg),var(--bg2))}
+img{max-width:100%}
+.btn{background:var(--btn);color:var(--on-btn);border:0;border-radius:999px;padding:13px 34px;font:700 16px/1 var(--sans);cursor:pointer;box-shadow:0 10px 26px -10px var(--glow);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,.pl-btn:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+
+/* ===== 2. Açılış ===== */
+.intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 38%,var(--p-soft),transparent 60%),linear-gradient(170deg,var(--bg),var(--bg2));transition:opacity .8s,visibility .8s}
+.intro.hide{opacity:0;visibility:hidden}
+.intro-heart{font-size:84px;line-height:1;color:var(--p);filter:drop-shadow(0 0 22px var(--glow));animation:pulse 1.3s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.intro-title{font:400 clamp(2rem,8vw,2.9rem)/1.2 var(--script);margin:18px 0 4px;color:var(--ac)}
+.intro-sub{color:var(--mu);margin:0 0 6px}
+.intro .btn{margin-top:18px}
+
+/* ===== 3. Hero ===== */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:40px 18px;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(60% 46% at 50% 34%,var(--p-soft),transparent 72%),radial-gradient(40% 30% at 85% 85%,var(--s-soft),transparent 70%);background-size:cover;background-position:center}
+.has-img .hero-bg{background-size:cover;background-position:center}
+.has-img .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),var(--bg2));opacity:.7}
+.hero-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:640px}
+.names{margin:0;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);font-size:.85rem}
+.hero-title{font:400 clamp(2.6rem,10vw,4.8rem)/1.12 var(--script);margin:14px 0 10px;color:var(--tx);text-shadow:0 0 28px var(--glow);white-space:pre-line;overflow-wrap:anywhere}
+.hero-text{max-width:520px;margin:0;color:var(--mu);line-height:1.75;white-space:pre-line}
+.counter{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:30px}
+.unit{min-width:76px;padding:13px 8px;border:1px solid var(--line);border-radius:16px;background:var(--card);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.unit b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums;color:var(--tx)}
+.unit span{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.since{margin:16px 0 0;color:var(--ac);font-size:.88rem}
+.met{margin-top:16px;max-width:340px;padding:12px 18px;border:1px dashed var(--line);border-radius:16px;background:var(--card);color:var(--mu);font-size:.88rem;white-space:pre-line}
+.met b{color:var(--tx)}
+
+/* ===== 4. Albüm - ortak ===== */
+.album{position:relative;padding:76px 16px 96px;overflow:hidden}
+.atmo{position:absolute;inset:0;z-index:0;pointer-events:none}
+.album-in{position:relative;z-index:1;max-width:1080px;margin:0 auto}
+.album-title{font:400 clamp(2.2rem,7vw,3.4rem)/1.2 var(--script);text-align:center;margin:0 0 30px;color:var(--ac);overflow-wrap:anywhere}
+.gal{position:relative}
+.ph{margin:0;position:relative}
+.frame{position:relative}
+.frame img{display:block;width:100%;height:auto;cursor:zoom-in}
+.frame i{display:none}
+figcaption{overflow-wrap:anywhere}
+.foot{text-align:center;color:var(--ac);padding:34px 16px 60px;font:400 1.35rem/1.4 var(--script);white-space:pre-line}
+
+/* ===== 5. Kayan yıldızlar ===== */
+.mem-stars{background:radial-gradient(ellipse at 50% 0,var(--sky2),transparent 75%),var(--sky1);color:#f3eeff}
+.mem-stars .album-title{color:#fff;text-shadow:0 0 24px var(--glow)}
+.star{position:absolute;border-radius:50%;background:var(--sky-star);opacity:.25;animation:twinkle 3s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:1;transform:scale(1.5)}}
+.star.spark{background:none;border-radius:0;width:12px!important;height:12px!important}
+.star.spark::before,.star.spark::after{content:"";position:absolute;left:50%;top:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 8px 1px #fff}
+.star.spark::before{width:100%;height:1px}.star.spark::after{width:1px;height:100%}
+.meteor{position:absolute;width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:shoot 10s linear infinite}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(33deg)}2%{opacity:1}9%{opacity:0;transform:translate(300px,195px) rotate(33deg)}100%{opacity:0;transform:translate(300px,195px) rotate(33deg)}}
+.mem-stars .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 22px;padding-top:24px}
+.mem-stars .ph:nth-child(3n+2){margin-top:48px}
+.mem-stars .ph:nth-child(3n){margin-top:18px}
+.mem-stars .frame{aspect-ratio:3/4;border-radius:50% 50% 16px 16px/36% 36% 16px 16px;border:1.5px solid rgba(255,255,255,.55);box-shadow:0 0 0 7px rgba(255,255,255,.05),0 0 36px var(--glow),0 0 90px -10px var(--s-soft);animation:float 7s ease-in-out infinite alternate;animation-delay:var(--d)}
+.mem-stars .frame img{height:100%;object-fit:cover;border-radius:inherit}
+@keyframes float{to{transform:translateY(-9px)}}
+.mem-stars .d1{display:block;position:absolute;top:7%;right:-7px;width:16px;height:16px;background:var(--sky-star);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);filter:drop-shadow(0 0 5px #fff);animation:twinkle 2.4s ease-in-out infinite alternate}
+.mem-stars .d2{display:block;position:absolute;bottom:14%;left:-6px;width:9px;height:9px;background:var(--s);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 3.2s ease-in-out infinite alternate}
+.mem-stars figcaption{margin-top:16px;text-align:center;font-size:.92rem;color:#e9e0ff;letter-spacing:.02em;text-shadow:0 0 12px var(--glow)}
+.mem-stars figcaption::before{content:"✦ ";color:var(--s)}
+
+/* ===== 6. Mandallı fotoğraflar ===== */
+.mem-clothesline{background:radial-gradient(ellipse at 50% -5%,rgba(255,196,110,.28),transparent 58%),linear-gradient(180deg,var(--bg2),var(--bg))}
+.mem-clothesline .atmo::before{content:"";position:absolute;left:-2%;right:-2%;top:22px;height:2px;background:rgba(120,88,52,.8);border-radius:50%/100%;box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.bulb{position:absolute;width:9px;height:13px;border-radius:50% 50% 48% 48%/60% 60% 40% 40%;background:#ffe2a0;box-shadow:0 0 10px 4px rgba(255,205,110,.75),0 0 38px 12px rgba(255,170,70,.28);animation:flick 3.4s ease-in-out infinite alternate}
+@keyframes flick{0%{opacity:.7}40%{opacity:1}100%{opacity:.82}}
+.mem-clothesline .album-title{padding-top:26px;text-shadow:0 0 22px rgba(255,200,120,.45)}
+.mem-clothesline .gal{display:grid;grid-template-columns:repeat(3,1fr);row-gap:64px;column-gap:0;align-items:start;padding-top:10px}
+.mem-clothesline .ph{padding:36px 14px 0}
+.mem-clothesline .ph::before{content:"";position:absolute;left:0;right:0;top:20px;height:3px;background:repeating-linear-gradient(115deg,#8b6b44 0 3px,#b08a5a 3px 6px);box-shadow:0 3px 4px rgba(0,0,0,.4)}
+.mem-clothesline .frame{background:#fff8eb;padding:9px;border-radius:2px;box-shadow:0 16px 26px -12px rgba(0,0,0,.65),0 0 0 1px rgba(90,60,30,.15);transform-origin:50% -14px;animation:sway 6.5s ease-in-out infinite alternate;animation-delay:var(--d)}
+@keyframes sway{from{transform:rotate(calc(var(--r) * .35 - 1.4deg))}to{transform:rotate(calc(var(--r) * .35 + 1.4deg))}}
+.mem-clothesline .frame img{filter:sepia(.14) saturate(1.06)}
+.mem-clothesline .frame::after{content:"";position:absolute;inset:9px;background:radial-gradient(circle at 50% -10%,rgba(255,215,150,.38),transparent 62%);pointer-events:none}
+.mem-clothesline .d1{display:block;position:absolute;top:-24px;left:50%;width:15px;height:38px;transform:translateX(-50%);border-radius:3px 3px 2px 2px;background:linear-gradient(90deg,#e0bd88,#b98d52 55%,#e0bd88);box-shadow:0 3px 4px rgba(0,0,0,.45);z-index:2}
+.mem-clothesline .d1::after{content:"";position:absolute;left:2px;right:2px;top:16px;height:3px;background:#6b6f78;border-radius:2px}
+.mem-clothesline figcaption{display:table;margin:14px auto 0;padding:5px 14px 5px 22px;background:#ead6ad;color:#5b4128;font:400 .98rem/1.3 var(--hand);border-radius:2px 9px 9px 2px;position:relative;box-shadow:0 4px 8px -4px rgba(0,0,0,.5);text-align:center}
+.mem-clothesline figcaption::before{content:"";position:absolute;left:7px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--bg2);box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
+
+/* ===== 7. Anı defteri ===== */
+.mem-scrapbook{background:linear-gradient(170deg,var(--bg2),var(--bg));padding-left:10px;padding-right:10px}
+.mem-scrapbook .album-in{background-color:var(--paper);color:var(--ink);padding:46px clamp(16px,4vw,46px) 30px clamp(30px,6vw,64px);border-radius:6px;box-shadow:0 34px 60px -24px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.06);
+  background-image:linear-gradient(90deg,transparent 52px,rgba(214,90,100,.3) 52px,rgba(214,90,100,.3) 54px,transparent 54px),repeating-linear-gradient(transparent 0 33px,rgba(80,110,160,.16) 33px 34px),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .08 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.mem-scrapbook .album-in::before{content:"";position:absolute;left:12px;top:20px;bottom:20px;width:14px;background:radial-gradient(circle,rgba(40,30,30,.45) 4px,transparent 5px) 0 0/14px 38px repeat-y}
+.mem-scrapbook .album-title{color:var(--ink);font-family:var(--hand);font-size:clamp(1.9rem,6vw,2.8rem);display:table;margin:0 auto 34px;border-bottom:3px dotted var(--p);padding:0 12px 4px}
+.mem-scrapbook .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 30px;align-items:start}
+.mem-scrapbook .ph{margin:0 0 6px;transform:rotate(var(--r))}
+.mem-scrapbook .frame{background:#fff;padding:9px;box-shadow:0 7px 14px -7px rgba(70,45,20,.55),0 0 0 1px rgba(0,0,0,.05)}
+.mem-scrapbook .d1{display:block;position:absolute;top:-13px;left:50%;width:88px;height:24px;transform:translateX(-50%) rotate(calc(var(--r) * -1.6));background:repeating-linear-gradient(135deg,var(--s) 0 7px,rgba(255,255,255,.55) 7px 14px);opacity:.72;box-shadow:0 1px 2px rgba(0,0,0,.18);clip-path:polygon(0 8%,4% 0,8% 8%,12% 0,16% 8%,20% 0,24% 8%,28% 0,32% 8%,36% 0,40% 8%,44% 0,48% 8%,52% 0,56% 8%,60% 0,64% 8%,68% 0,72% 8%,76% 0,80% 8%,84% 0,88% 8%,92% 0,96% 8%,100% 0,100% 92%,96% 100%,92% 92%,88% 100%,84% 92%,80% 100%,76% 92%,72% 100%,68% 92%,64% 100%,60% 92%,56% 100%,52% 92%,48% 100%,44% 92%,40% 100%,36% 92%,32% 100%,28% 92%,24% 100%,20% 92%,16% 100%,12% 92%,8% 100%,4% 92%,0 100%)}
+.mem-scrapbook .ph:nth-child(3n+2) .d1{top:-9px;left:-10px;transform:rotate(-38deg);width:70px}
+.mem-scrapbook .ph:nth-child(3n) .d1{left:auto;right:-14px;top:-6px;transform:rotate(36deg);width:70px;background:repeating-linear-gradient(90deg,var(--p) 0 6px,rgba(255,255,255,.55) 6px 12px)}
+.mem-scrapbook .d2{display:block;position:absolute;right:2px;bottom:2px;width:26px;height:26px;background:linear-gradient(135deg,transparent 50%,rgba(60,45,35,.8) 50%)}
+.mem-scrapbook figcaption{margin-top:10px;font:400 1.08rem/1.35 var(--hand);color:var(--ink);text-align:center}
+.mem-scrapbook .ph:nth-child(3n+1) figcaption{background:rgba(255,232,140,.92);padding:7px 10px;transform:rotate(-1.6deg);box-shadow:0 4px 8px -4px rgba(0,0,0,.4);margin:12px 6px 0}
+.mem-scrapbook .ph:nth-child(4n)::after{content:"♥";position:absolute;right:-6px;bottom:34px;color:var(--p);font-size:1.5rem;transform:rotate(14deg);text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.mem-scrapbook .foot,.mem-scrapbook ~ .foot{color:var(--ac)}
+
+/* ===== 8. Polaroid duvarı ===== */
+.mem-polaroid{background:radial-gradient(ellipse at 50% 18%,rgba(255,244,225,.14),transparent 60%),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 30px),var(--bg2);box-shadow:inset 0 0 170px rgba(0,0,0,.42)}
+.mem-polaroid .album-in{max-width:1000px}
+.mem-polaroid .gal{display:flex;flex-wrap:wrap;justify-content:center;padding:14px 0 10px}
+.mem-polaroid .ph{width:min(46%,250px);margin:-4px -2px 26px;padding:12px 12px 12px;background:#fdfcf8;transform:rotate(var(--r));box-shadow:0 1px 2px rgba(0,0,0,.4),0 20px 32px -10px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.08)}
+.mem-polaroid .ph:nth-child(even){margin-top:26px}
+.mem-polaroid .ph:nth-child(3n){margin-left:-12px}
+.mem-polaroid .frame{aspect-ratio:1/1;background:#222}
+.mem-polaroid .frame img{height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.08)}
+.mem-polaroid .frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 22px rgba(0,0,0,.32);pointer-events:none}
+.mem-polaroid .d1{display:block;position:absolute;top:-24px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#fff 0 11%,var(--s) 14% 58%,var(--p) 100%);box-shadow:0 5px 6px rgba(0,0,0,.55);z-index:2}
+.mem-polaroid figcaption{min-height:46px;padding-top:11px;text-align:center;color:#2c2a35;font:400 1.02rem/1.3 var(--hand)}
+
+/* ===== 9. Cam kartlar ===== */
+.mem-glass{background:linear-gradient(170deg,var(--bg),var(--bg2))}
+.mem-glass .atmo{inset:-12%;background:radial-gradient(circle at 14% 18%,var(--p) 0,transparent 36%),radial-gradient(circle at 88% 34%,var(--s) 0,transparent 38%),radial-gradient(circle at 38% 92%,var(--p-soft) 0,transparent 44%);opacity:.55;filter:blur(36px);animation:orbs 24s ease-in-out infinite alternate}
+@keyframes orbs{to{transform:translate3d(3%,-4%,0) scale(1.08)}}
+.mem-glass .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mem-glass .ph{padding:10px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.24),rgba(255,255,255,.06));-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.32);box-shadow:0 24px 50px -22px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.5)}
+.mem-glass .ph:nth-child(5n+1){grid-column:span 2}
+.mem-glass .frame{border-radius:20px;overflow:hidden;aspect-ratio:4/5}
+.mem-glass .ph:nth-child(5n+1) .frame{aspect-ratio:16/10}
+.mem-glass .frame img{height:100%;object-fit:cover}
+.mem-glass .d1{display:block;position:absolute;inset:0;background:radial-gradient(circle at 18% 0,rgba(255,255,255,.42),transparent 52%);pointer-events:none}
+.mem-glass figcaption{padding:11px 8px 4px;color:var(--tx);font-size:.92rem;text-align:center}
+[data-mode=light] .mem-glass .ph{background:linear-gradient(145deg,rgba(255,255,255,.75),rgba(255,255,255,.38));border-color:rgba(255,255,255,.85);box-shadow:0 22px 44px -22px rgba(80,60,100,.35),inset 0 1px 0 #fff}
+[data-mode=light] .mem-glass .atmo{opacity:.7}
+
+/* ===== 10. Müzik oynatıcı & büyük görsel ===== */
+.player{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;max-width:calc(100% - 28px);padding:7px 16px 7px 7px;border-radius:999px;background:var(--card);border:1px solid var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px -14px rgba(0,0,0,.6)}
+[data-mode=light] .player{background:rgba(255,255,255,.8)}
+.pl-btn{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:var(--btn);color:var(--on-btn);font-size:13px;cursor:pointer;display:grid;place-items:center}
+.pl-meta{display:flex;align-items:center;gap:9px;min-width:0}
+.pl-title{font-size:.85rem;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+.pl-bars{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
+.pl-bars i{width:3px;height:4px;border-radius:2px;background:var(--p)}
+.playing .pl-bars i{animation:bar .9s ease-in-out infinite alternate}
+.playing .pl-bars i:nth-child(2){animation-delay:.2s}.playing .pl-bars i:nth-child(3){animation-delay:.45s}.playing .pl-bars i:nth-child(4){animation-delay:.1s}
+@keyframes bar{to{height:14px}}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(8,6,16,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:78vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox p{color:#f1ebff;margin:14px 0 0;text-align:center}
+.lb-close{position:absolute;top:12px;right:16px;border:0;background:none;color:#fff;font-size:38px;cursor:pointer}
+
+/* ===== 11. Mobil ve hareket tercihi ===== */
+@media(max-width:760px){
+  .mem-stars .gal{grid-template-columns:repeat(2,1fr);gap:30px 14px}
+  .mem-stars .ph:nth-child(3n+2),.mem-stars .ph:nth-child(3n){margin-top:0}.mem-stars .ph:nth-child(even){margin-top:38px}
+  .mem-clothesline .gal{grid-template-columns:repeat(2,1fr)}
+  .mem-clothesline .ph{padding-left:8px;padding-right:8px}
+  .mem-glass .gal{grid-template-columns:repeat(2,1fr);gap:12px}
+  .mem-glass .ph{border-radius:22px;padding:7px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .mem-glass .frame{border-radius:16px}
+  .mem-glass .atmo{filter:blur(24px);animation:none}
+  .mem-polaroid .ph{width:min(47%,220px);padding:9px 9px 9px}
+  .mem-scrapbook .album-in{padding-left:34px}
+  .mem-scrapbook .gal{grid-template-columns:repeat(2,1fr);gap:22px 14px}
+  .mem-scrapbook .frame{padding:6px}
+  .album{padding:60px 12px 80px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .intro-heart{animation:none}
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{PAGE_TITLE}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#a66be8;--soft:#e8dcff;--bg:#0b0a1e}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:white;font-family:Inter,system-ui;overflow-x:hidden}
+.stars{position:fixed;inset:0;pointer-events:none;background:radial-gradient(2px 2px at 12% 20%,#fff9,transparent),radial-gradient(2px 2px at 78% 12%,#fff9,transparent),radial-gradient(2px 2px at 40% 70%,#c9b3ff99,transparent),radial-gradient(ellipse at top,#1a1450,transparent 65%);animation:tw 4s infinite alternate}@keyframes tw{to{opacity:.65}}
+#intro{position:fixed;inset:0;z-index:5;background:radial-gradient(circle at 50% 40%,#2a1a6e,#0b0a1e 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;transition:.8s}#intro.hide{opacity:0;visibility:hidden}
+#intro .heart{font-size:82px;filter:drop-shadow(0 0 20px #a66be8);animation:pulse 1.2s infinite}@keyframes pulse{50%{transform:scale(1.13)}}
+h2.script,h1{font-family:'Dancing Script',cursive}#intro h2{font-size:2.3rem;margin:18px 0 4px}#intro p{color:var(--soft)}
+button{border:0;border-radius:30px;padding:13px 32px;background:linear-gradient(135deg,#5268d8,#a66be8);color:white;font-weight:700;font-size:16px;margin-top:18px}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 18px;background:linear-gradient(#0b0a1e88,#0b0a1eee),url('{{HERO_IMAGE}}') center/cover no-repeat}
+.names{letter-spacing:.2em;text-transform:uppercase;color:var(--soft);font-size:.85rem}.hero h1{font-size:clamp(2.7rem,10vw,5rem);line-height:1.12;margin:12px 0;text-shadow:0 0 24px #a66be877}.hero .message{max-width:520px;color:var(--soft);line-height:1.7;font-weight:300}
+.counter{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:28px;max-width:390px}.unit{min-width:72px;padding:12px 8px;border:1px solid #b99aff66;border-radius:15px;background:#9b5de526;backdrop-filter:blur(8px)}.unit b{display:block;font-size:1.55rem}.unit span{font-size:.68rem;color:var(--soft);text-transform:uppercase}
+.since{color:var(--soft);margin-top:16px;font-size:.85rem}.talk{margin-top:15px;color:var(--soft);background:#9b5de522;border:1px dashed #b99aff88;border-radius:16px;padding:12px 16px;max-width:340px;font-size:.85rem}
+.album{max-width:1000px;margin:auto;padding:65px 16px 80px}.album h2{text-align:center;font-size:2.6rem;margin:0 0 8px}.grid{columns:2 150px;column-gap:13px}.photo{break-inside:avoid;margin-bottom:14px;padding:7px 7px 4px;border-radius:13px;background:#211b4b;border:1px solid #b99aff55}.photo img{display:block;width:100%;border-radius:8px}.photo p{text-align:center;color:var(--soft);font-family:'Dancing Script';font-size:1.1rem;margin:8px 2px}
+footer{text-align:center;color:var(--soft);padding:30px 15px 45px}@media(min-width:700px){.grid{columns:3 200px}}
+</style></head><body><div class="stars"></div>
+<div id="intro"><div class="heart">♥</div><h2 class="script">{{INTRO_TITLE}}</h2><p>{{INTRO_SUB}}</p><button id="open">Aç ♥</button></div>
+<audio id="audio" src="{{MUSIC_SRC}}" loop></audio>
+<main><section class="hero"><div class="names">{{NAMES}}</div><h1>{{HERO_TITLE}}</h1><p class="message">{{HERO_TEXT}}</p>
+<div class="counter"><div class="unit"><b id="days">0</b><span>Gün</span></div><div class="unit"><b id="hours">0</b><span>Saat</span></div><div class="unit"><b id="minutes">0</b><span>Dakika</span></div><div class="unit"><b id="seconds">0</b><span>Saniye</span></div></div>
+<div class="since">♥ Birlikte geçen zaman ♥</div>{{TALK_BLOCK}}</section>
+<section class="album"><h2 class="script">{{ALBUM_TITLE}}</h2><div class="grid">{{PHOTOS_HTML}}</div></section></main><footer>{{FOOTER_TEXT}}</footer>
+<script>
+const start=new Date('{{START_DATE}}T00:00:00');function tick(){let diff=Math.max(0,Date.now()-start.getTime());let total=Math.floor(diff/1000);document.getElementById('days').textContent=Math.floor(total/86400);document.getElementById('hours').textContent=Math.floor(total%86400/3600);document.getElementById('minutes').textContent=Math.floor(total%3600/60);document.getElementById('seconds').textContent=total%60}tick();setInterval(tick,1000);
+document.getElementById('open').addEventListener('click',()=>{document.getElementById('intro').classList.add('hide');const a=document.getElementById('audio');if(a&&a.getAttribute('src'))a.play().catch(()=>{})});
+</script></body></html>
